@@ -9,6 +9,7 @@ export class AppComponent {
   title = 'dir works!';
   private isShow = true;
   private items = ['1', '2', '3', '4', '5'];
+  value: number = 100;
 
   onSwitch() {
     this.isShow = !this.isShow;

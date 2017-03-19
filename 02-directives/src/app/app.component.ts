@@ -7,4 +7,10 @@ import {Component} from "@angular/core";
 })
 export class AppComponent {
   title = 'dir works!';
+  private isShow = true;
+  private items = ['1', '2', '3', '4', '5'];
+
+  onSwitch() {
+    this.isShow = !this.isShow;
+  }
 }

@@ -4,9 +4,11 @@
       <h1>Hello World!</h1>
     </div>
     <hr>
-    <a [routerLink]="['/']">Home</a>
+    <a [routerLink]="['/']" [queryParams]="{analytics: 500}" [fragment]="'section1'" routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact: true}">Home</a>
     <input type="text" #id (input)="0">
-    <a [routerLink]="['user', id.value]">User</a>
+    <a [routerLink]="['user', id.value]" routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact: true}">User</a>
     <hr>
     <router-outlet></router-outlet>
   </div>

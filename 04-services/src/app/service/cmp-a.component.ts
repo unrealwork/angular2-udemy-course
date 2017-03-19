@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {LogService} from "./log.service";
+import {DataService} from "./data.service";
 
 @Component({
-    selector: 'si-cmp-a',
-    template: `
+  selector: 'si-cmp-a',
+  template: `
     <div>
       <input type="text" #input>
       <button (click)="onLog(input.value)">Log</button>
@@ -22,22 +24,26 @@ import { Component } from '@angular/core';
   `
 })
 export class CmpAComponent {
-    value = '';
-    items: string[] = [];
+  value = '';
+  items: string[] = [];
 
-    onLog(value: string) {
+  constructor(private logService: LogService, private dataService: DataService) {
 
-    }
+  }
 
-    onStore(value: string) {
+  onLog(value: string) {
+    this.logService.writeToLog(value);
+  }
 
-    }
+  onStore(value: string) {
+    this.dataService.addData(value);
+  }
 
-    onGet() {
+  onGet() {
+    this.items = this.dataService.getData().slice(0);
+  }
 
-    }
-
-    onSend(value: string) {
-
-    }
+  onSend(value: string) {
+    this.dataService.pushData(value);
+  }
 }

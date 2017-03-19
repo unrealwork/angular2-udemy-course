@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LogService} from "./log.service";
+import {DataService} from "./data.service";
 
 @Component({
-    selector: 'si-cmp-b',
-    template: `
+  selector: 'si-cmp-b',
+  template: `
     <div>
       <input type="text" #input>
       <button (click)="onLog(input.value)">Log</button>
@@ -21,18 +23,27 @@ import { Component, OnInit } from '@angular/core';
   `
 })
 export class CmpBComponent implements OnInit {
-    value = '';
-    items: string[] = [];
+  value = '';
+  items: string[] = [];
 
-    onLog(value: string) {
-    }
+  constructor(private logService: LogService, private dataService: DataService) {
+  }
 
-    onStore(value: string) {
-    }
+  onLog(value: string) {
+    this.logService.writeToLog(value);
+  }
 
-    onGet() {
-    }
+  onStore(value: string) {
+  }
 
-    ngOnInit() {
-    }
+  onGet() {
+  }
+
+  ngOnInit() {
+    this.dataService.pushedData.subscribe(
+      data => {
+        this.value = data;
+      }
+    )
+  }
 }

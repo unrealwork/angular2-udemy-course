@@ -1,0 +1,18 @@
+<div class="pipes">
+  <h1>Pipes</h1>
+  <h2>Built-in pipes</h2>
+  {{myValue | uppercase}}
+  <br>
+  {{myDate | date: 'MM/dddd'}}
+  <br>
+  {{myValue | slice:3:7 | uppercase}}
+  <br>
+  <input type="text" #inputField (keyup)="0">
+  <p>{{inputField.value | doub}}</p>
+  <br>
+  <input type="text" #inputAdd>
+  <button (click)="values.push(inputAdd.value)">Add</button>
+  <ul>
+    <li *ngFor="let item of values | filter:'I'">{{item}}</li>
+  </ul>
+</div>
